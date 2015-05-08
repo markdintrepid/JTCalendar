@@ -30,12 +30,12 @@
     self.weekDayFormat = JTCalendarWeekDayFormatShort;
     self.useCacheSystem = YES;
     self.focusSelectedDayChangeMode = NO;
+    self.selectionAdjustsAppearance = YES;
     
     self.ratioContentMenu = 2.;
     self.autoChangeMonth = YES;
     
     self.dayCircleRatio = 1.;
-    self.dayDotRatio = 1. / 9.;
     
     self.menuMonthTextFont = [UIFont systemFontOfSize:17.];
     self.weekDayTextFont = [UIFont systemFontOfSize:11];
@@ -51,26 +51,43 @@
     self.menuMonthTextColor = [UIColor blackColor];
     self.weekDayTextColor = [UIColor colorWithRed:152./256. green:147./256. blue:157./256. alpha:1.];
     
-    [self setDayDotColorForAll:[UIColor colorWithRed:43./256. green:88./256. blue:134./256. alpha:1.]];
     [self setDayTextColorForAll:[UIColor blackColor]];
     
     self.dayTextColorOtherMonth = [UIColor colorWithRed:152./256. green:147./256. blue:157./256. alpha:1.];
 
     self.dayCircleColorSelected = [UIColor redColor];
     self.dayTextColorSelected = [UIColor whiteColor];
-    self.dayDotColorSelected = [UIColor whiteColor];
     
     self.dayCircleColorSelectedOtherMonth = self.dayCircleColorSelected;
     self.dayTextColorSelectedOtherMonth = self.dayTextColorSelected;
-    self.dayDotColorSelectedOtherMonth = self.dayDotColorSelected;
     
     self.dayCircleColorToday = [UIColor colorWithRed:0x33/256. green:0xB3/256. blue:0xEC/256. alpha:.5];
     self.dayTextColorToday = [UIColor whiteColor];
-    self.dayDotColorToday = [UIColor whiteColor];
     
     self.dayCircleColorTodayOtherMonth = self.dayCircleColorToday;
     self.dayTextColorTodayOtherMonth = self.dayTextColorToday;
-    self.dayDotColorTodayOtherMonth = self.dayDotColorToday;
+    
+    self.dayCircleColorEvent = [UIColor colorWithRed:43./256. green:88./256. blue:134./256. alpha:1.];
+    self.dayCircleColorEventOtherMonth = self.dayCircleColorEvent;
+    
+    self.dayCircleColorEventSelected = self.dayCircleColorSelected;
+    self.dayCircleColorEventSelectedOtherMonth = self.dayCircleColorEventSelected;
+    
+    self.dayCircleColorEventToday = self.dayCircleColorToday;
+    self.dayCircleColorEventTodayOtherMonth = self.dayCircleColorEventToday;
+    
+    self.dayTextColorEvent = self.dayTextColor;
+    self.dayTextColorEventOtherMonth = self.dayTextColorOtherMonth;
+    
+    self.dayTextColorEventSelected = self.dayTextColorSelected;
+    self.dayTextColorEventSelectedOtherMonth = self.dayTextColorEventSelected;
+    
+    self.dayTextColorEventToday = self.dayTextColorToday;
+    self.dayTextColorEventTodayOtherMonth = self.dayTextColorEventToday;
+    
+    self.dayCircleBorderColor = [UIColor clearColor];
+    self.dayCircleBorderColorToday = [UIColor blackColor];
+    self.dayCircleBorderColorOtherMonth = [UIColor clearColor];
     
     self.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
         NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
@@ -108,18 +125,6 @@
     return calendar;
 }
 
-- (void)setDayDotColorForAll:(UIColor *)dotColor
-{
-    self.dayDotColor = dotColor;
-    self.dayDotColorSelected = dotColor;
-    
-    self.dayDotColorOtherMonth = dotColor;
-    self.dayDotColorSelectedOtherMonth = dotColor;
-    
-    self.dayDotColorToday = dotColor;
-    self.dayDotColorTodayOtherMonth = dotColor;
-}
-
 - (void)setDayTextColorForAll:(UIColor *)textColor
 {
     self.dayTextColor = textColor;
@@ -130,6 +135,26 @@
     
     self.dayTextColorToday = textColor;
     self.dayTextColorTodayOtherMonth = textColor;
+    
+    self.dayTextColorEvent = textColor;
+    self.dayTextColorEventOtherMonth = textColor;
+}
+
+- (void)setDayTextColorForAllOtherMonth:(UIColor *)textColor {
+    self.dayTextColorOtherMonth = textColor;
+    self.dayTextColorTodayOtherMonth = textColor;
+    self.dayTextColorSelectedOtherMonth = textColor;
+    self.dayTextColorEventOtherMonth = textColor;
+    self.dayTextColorEventTodayOtherMonth = textColor;
+    self.dayTextColorEventSelectedOtherMonth = textColor;
+}
+
+- (void)setDayCircleColorForAllOtherMonth:(UIColor *)textColor {
+    self.dayCircleColorSelectedOtherMonth = textColor;
+    self.dayCircleColorTodayOtherMonth = textColor;
+    self.dayCircleColorEventOtherMonth = textColor;
+    self.dayCircleColorEventSelectedOtherMonth = textColor;
+    self.dayCircleColorEventTodayOtherMonth = textColor;
 }
 
 @end

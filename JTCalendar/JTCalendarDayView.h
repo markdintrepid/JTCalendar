@@ -15,6 +15,7 @@
 
 @property (nonatomic) NSDate *date;
 @property (assign, nonatomic) BOOL isOtherMonth;
+@property (assign, nonatomic) BOOL hasEvent;
 
 - (void)reloadData;
 - (void)reloadAppearance;

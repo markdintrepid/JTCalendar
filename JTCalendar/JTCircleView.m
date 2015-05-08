@@ -34,10 +34,11 @@
 
     rect = CGRectInset(rect, .5, .5);
     
-    CGContextSetStrokeColorWithColor(ctx, [self.color CGColor]);
+    CGContextSetLineWidth(ctx, 1.0);
+    CGContextSetStrokeColorWithColor(ctx, [self.borderColor CGColor]);
     CGContextSetFillColorWithColor(ctx, [self.color CGColor]);
     
-    CGContextAddEllipseInRect(ctx, rect);
+    CGContextStrokeEllipseInRect(ctx, rect);
     CGContextFillEllipseInRect(ctx, rect);
     
     CGContextFillPath(ctx);
@@ -46,6 +47,13 @@
 - (void)setColor:(UIColor *)color
 {
     self->_color = color;
+    
+    [self setNeedsDisplay];
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    self->_borderColor = borderColor;
     
     [self setNeedsDisplay];
 }
