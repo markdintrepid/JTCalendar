@@ -32,7 +32,7 @@
     CGContextSetFillColorWithColor(ctx, [self.backgroundColor CGColor]);
     CGContextFillRect(ctx, rect);
 
-    rect = CGRectInset(rect, .5, .5);
+    rect = CGRectInset(rect, 1.0, 1.0);
     
     CGContextSetLineWidth(ctx, 1.0);
     CGContextSetStrokeColorWithColor(ctx, [self.borderColor CGColor]);
